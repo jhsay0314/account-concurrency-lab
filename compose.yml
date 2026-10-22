@@ -1,0 +1,12 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: account_lab
+      MYSQL_USER: lab
+      MYSQL_PASSWORD: lab-local-only
+      MYSQL_ROOT_PASSWORD: root-local-only
+    ports:
+      - "127.0.0.1:3307:3306"
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro

@@ -1,0 +1,36 @@
+name: MySQL concurrency tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      benchmark:
+        description: Run the optional lock comparison (CI timings are not local timings)
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Integration tests
+        if: ${{ inputs.benchmark != true }}
+        run: mvn -B verify
+      - name: Integration tests and benchmark
+        if: ${{ inputs.benchmark == true }}
+        run: mvn -B -Dlab.benchmark=true verify
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: |
+            target/surefire-reports/
+            target/benchmarks/

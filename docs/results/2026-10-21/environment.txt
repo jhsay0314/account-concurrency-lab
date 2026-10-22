@@ -1,0 +1,15 @@
+status=RUNNING
+started=2026-10-21T08:41:09.448997200Z
+java=21.0.3
+os=Windows 11 amd64
+processors=16
+max_heap_bytes=4118806528
+mysql=8.4.11
+isolation=READ-COMMITTED
+pool_max=16
+rounds=5
+waves_per_round=10
+warmup_rounds_per_strategy=1
+claim_retries=0
+status=COMPLETED
+finished=2026-10-21T08:42:21.737431900Z

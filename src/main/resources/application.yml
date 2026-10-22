@@ -1,0 +1,14 @@
+server:
+  address: 127.0.0.1
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3307/account_lab}
+    username: ${DB_USER:lab}
+    password: ${DB_PASSWORD:lab-local-only}
+    hikari:
+      maximum-pool-size: 16
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate

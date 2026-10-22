@@ -1,0 +1,7 @@
+target/
+.idea/
+*.iml
+.env
+.m2-local/
+build.log
+test.log
